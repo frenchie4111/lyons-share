@@ -43,6 +43,20 @@ To change the card, edit the `title`/`description` in
 `src/pages/og/[...route].ts` and rebuild. Keep them in sync with the `og:` meta
 tags in `index.astro`.
 
+## Favicon
+
+The `LS` monogram is rendered from the same Archivo Expanded TTF as the share
+card, as an ink tile with paper letters — the site's palette inverted, so the
+mark holds up at 16px against a light browser tab. Regenerate with:
+
+```sh
+python3 scripts/build-favicon.py   # needs Pillow
+```
+
+That writes `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png`, and
+`icon-512.png` into `public/`. The outputs are committed, so the build doesn't
+depend on Python.
+
 ## Develop
 
 Requires Node 22 (see `.nvmrc`).
