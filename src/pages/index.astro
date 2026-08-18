@@ -1,5 +1,13 @@
 ---
 const email = "mdl0394@gmail.com";
+
+const title = "Lyons Share LLC";
+const statement =
+  "A professional software engineer from before LLMs were cool.";
+const description = `Independent software consulting. ${statement}`;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL("/og/index.png", Astro.site);
 ---
 
 <!doctype html>
@@ -7,11 +15,27 @@ const email = "mdl0394@gmail.com";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Lyons Share LLC</title>
-    <meta
-      name="description"
-      content="Lyons Share LLC — independent software consulting by Mike Lyons. A professional software engineer from before LLMs were cool."
-    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:title" content={statement} />
+    <meta property="og:description" content="Independent software consulting" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={statement} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={statement} />
+    <meta name="twitter:description" content="Independent software consulting" />
+    <meta name="twitter:image" content={ogImage} />
+
+    <meta name="theme-color" content="#e9ede4" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
