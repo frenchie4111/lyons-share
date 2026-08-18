@@ -1,0 +1,560 @@
+---
+const workstreams = [
+  {
+    id: "architecture",
+    label: "Architecture",
+    share: 40,
+    color: "#16211B",
+    body: "What's actually built versus what's on the slide. Where the system is held together by one service, one vendor, or one person — and what gives way first at ten times the load.",
+  },
+  {
+    id: "team",
+    label: "Team & delivery",
+    share: 25,
+    color: "#3E5A46",
+    body: "Who ships, how often, and how much of it is rework. What happens to the roadmap if the two engineers who understand the core system leave in the first year.",
+  },
+  {
+    id: "cost",
+    label: "Cost & scale",
+    share: 20,
+    color: "#6F8A71",
+    body: "What the infrastructure bill does after close, not before. Which line items are fixed, which grow with revenue, and which grow faster than revenue.",
+  },
+  {
+    id: "risk",
+    label: "Roadmap risk",
+    share: 15,
+    color: "#A9BCA4",
+    body: "Which promised features are engineering work with a date on them, and which are hope. What the integration really costs if this is a bolt-on.",
+  },
+];
+
+const email = "mdl0394@gmail.com";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lyons Share LLC — Technology diligence for private equity</title>
+    <meta
+      name="description"
+      content="Lyons Share LLC is the independent practice of Mike Lyons, a working CTO who reads engineering organizations for private equity deal teams."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,300..600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <span class="wordmark">Lyons Share LLC</span>
+      <span class="topbar-meta">Maryland &middot; Est. 2026</span>
+    </header>
+
+    <main>
+      <!-- ── Hero ─────────────────────────────────────────────── -->
+      <section class="hero">
+        <p class="eyebrow">Technology diligence for private equity</p>
+        <h1 class="headline">
+          An engineer reads the stack before you buy the company
+        </h1>
+        <p class="lede">
+          Lyons Share LLC is the independent practice of Mike Lyons — a working
+          CTO who reads engineering organizations for deal teams, then says
+          plainly what he'd fix, what he'd fund, and what he'd walk away from.
+        </p>
+
+        <!-- Signature: the share band. Proportions are the shape of an
+             engagement, and each segment is a link to its section. -->
+        <figure class="share">
+          <figcaption class="share-caption">Where an engagement's time goes</figcaption>
+          <div class="share-track">
+            {
+              workstreams.map((w, i) => (
+                <a
+                  class="seg"
+                  href={`#${w.id}`}
+                  style={`--w:${w.share}%; --c:${w.color}; --d:${180 + i * 110}ms`}
+                >
+                  <span class="seg-fill" aria-hidden="true" />
+                  <span class="seg-meta">
+                    <span class="seg-pct">{w.share}%</span>
+                    <span class="seg-label">{w.label}</span>
+                  </span>
+                </a>
+              ))
+            }
+          </div>
+        </figure>
+      </section>
+
+      <!-- ── The read ─────────────────────────────────────────── -->
+      <section class="band">
+        <div class="wrap">
+          <h2 class="section-title">The read</h2>
+          <p class="section-lede">
+            Four questions, answered with evidence from the code, the org chart,
+            and the bill — not from the management presentation.
+          </p>
+
+          <ol class="streams">
+            {
+              workstreams.map((w) => (
+                <li class="stream" id={w.id}>
+                  <span class="stream-rule" style={`--c:${w.color}`} />
+                  <div class="stream-head">
+                    <h3 class="stream-label">{w.label}</h3>
+                    <span class="stream-share">{w.share}%</span>
+                  </div>
+                  <p class="stream-body">{w.body}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </section>
+
+      <!-- ── Who ──────────────────────────────────────────────── -->
+      <section class="wrap who">
+        <h2 class="section-title">Who's behind it</h2>
+        <div class="who-grid">
+          <p>
+            Mike Lyons is a software engineer and CTO. He currently runs
+            engineering at Hi Finance, which helps students find grant funding
+            and manage their money while they're in school, and before that
+            built systems at Verkada. He has spent his career inside the systems
+            that diligence reports describe from the outside.
+          </p>
+          <p>
+            Lyons Share LLC is his contracting entity — a Maryland limited
+            liability company formed in August 2026. Engagements run through it
+            directly, or through the deals practice that placed him.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Contact ──────────────────────────────────────────── -->
+      <section class="band contact">
+        <div class="wrap">
+          <h2 class="section-title">Work with Lyons Share</h2>
+          <p class="section-lede">
+            Currently taking technology diligence and post-close strategy
+            engagements. The fastest way in is email.
+          </p>
+          <a class="email" href={`mailto:${email}`}>{email}</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-inner">
+        <div class="stamp">
+          <span class="stamp-line stamp-head">Filed &middot; State of Maryland</span>
+          <span class="stamp-line">Lyons Share LLC &middot; August 17, 2026</span>
+          <span class="stamp-line">Single-member LLC &middot; EIN on file</span>
+        </div>
+        <p class="colophon">
+          &copy; {new Date().getFullYear()} Lyons Share LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <style is:global>
+      /* ── Tokens ──────────────────────────────────────────────
+         Palette is ledger stock: the banded green paper that
+         financial printouts ran on, with one oxidized stamp red. */
+      :root {
+        --ink: #16211b;
+        --ink-soft: #47564c;
+        --paper: #e9ede4;
+        --band: #dde5d5;
+        --rule: #b3c2aa;
+        --stamp: #9e3b2e;
+
+        --display: "Archivo", system-ui, sans-serif;
+        --body: "Source Serif 4", Georgia, serif;
+        --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+        --gutter: clamp(1.25rem, 5vw, 4rem);
+        --wrap: 68rem;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--body);
+        font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--stamp);
+        outline-offset: 3px;
+      }
+
+      .wrap {
+        max-width: var(--wrap);
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+      }
+
+      /* ── Top bar ─────────────────────────────────────────── */
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        max-width: var(--wrap);
+        margin-inline: auto;
+        padding: 1.5rem var(--gutter);
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .wordmark {
+        font-family: var(--display);
+        font-variation-settings: "wdth" 118, "wght" 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-size: 0.9rem;
+      }
+
+      .topbar-meta {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--ink-soft);
+      }
+
+      /* ── Hero ────────────────────────────────────────────── */
+      .hero {
+        max-width: var(--wrap);
+        margin-inline: auto;
+        padding: clamp(3rem, 9vw, 6.5rem) var(--gutter) clamp(2.5rem, 6vw, 4rem);
+      }
+
+      .eyebrow {
+        margin: 0 0 clamp(1.25rem, 3vw, 2rem);
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--ink-soft);
+      }
+
+      .headline {
+        margin: 0;
+        font-family: var(--display);
+        font-variation-settings: "wdth" 112, "wght" 800;
+        text-transform: uppercase;
+        font-size: clamp(2.5rem, 8.2vw, 6.5rem);
+        line-height: 0.92;
+        letter-spacing: -0.015em;
+        max-width: 14ch;
+        text-wrap: balance;
+      }
+
+      .lede {
+        margin: clamp(1.5rem, 4vw, 2.25rem) 0 0;
+        max-width: 46ch;
+        font-size: 1.15em;
+        color: var(--ink-soft);
+      }
+
+      /* ── Signature: the share band ───────────────────────── */
+      .share {
+        margin: clamp(3rem, 8vw, 5rem) 0 0;
+      }
+
+      .share-caption {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--ink-soft);
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .share-track {
+        display: flex;
+        gap: 3px;
+        margin-top: 1rem;
+      }
+
+      .seg {
+        flex: 0 0 calc(var(--w) - 3px);
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .seg-fill {
+        display: block;
+        height: clamp(2.75rem, 7vw, 4.5rem);
+        background: var(--c);
+        transform-origin: left center;
+        animation: grow 0.75s cubic-bezier(0.22, 0.8, 0.24, 1) var(--d) both;
+      }
+
+      @keyframes grow {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      .seg-meta {
+        display: block;
+        padding-top: 0.6rem;
+      }
+
+      .seg-pct {
+        display: block;
+        font-family: var(--display);
+        font-variation-settings: "wdth" 105, "wght" 700;
+        font-size: 0.95rem;
+      }
+
+      .seg-label {
+        display: block;
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--ink-soft);
+      }
+
+      .seg:hover .seg-fill,
+      .seg:focus-visible .seg-fill {
+        filter: brightness(1.18);
+      }
+
+      .seg:hover .seg-label {
+        color: var(--ink);
+      }
+
+      /* ── Tinted bands ────────────────────────────────────── */
+      .band {
+        background: var(--band);
+        border-block: 1px solid var(--rule);
+        margin-top: clamp(3.5rem, 9vw, 6rem);
+        padding-block: clamp(3rem, 8vw, 5.5rem);
+      }
+
+      .section-title {
+        margin: 0;
+        font-family: var(--display);
+        font-variation-settings: "wdth" 112, "wght" 800;
+        text-transform: uppercase;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        line-height: 1;
+        letter-spacing: -0.005em;
+      }
+
+      .section-lede {
+        margin: 1rem 0 0;
+        max-width: 52ch;
+        color: var(--ink-soft);
+      }
+
+      /* ── Workstreams ─────────────────────────────────────── */
+      .streams {
+        list-style: none;
+        margin: clamp(2.5rem, 6vw, 4rem) 0 0;
+        padding: 0;
+        display: grid;
+        gap: clamp(2rem, 4vw, 3rem);
+        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+      }
+
+      .stream {
+        scroll-margin-top: 2rem;
+      }
+
+      .stream-rule {
+        display: block;
+        height: 5px;
+        background: var(--c);
+        margin-bottom: 1.1rem;
+      }
+
+      .stream-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+      }
+
+      .stream-label {
+        margin: 0;
+        font-family: var(--display);
+        font-variation-settings: "wdth" 108, "wght" 700;
+        text-transform: uppercase;
+        font-size: 1rem;
+        letter-spacing: 0.02em;
+      }
+
+      .stream-share {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        color: var(--ink-soft);
+      }
+
+      .stream-body {
+        margin: 0.75rem 0 0;
+        font-size: 0.98em;
+      }
+
+      /* ── Who ─────────────────────────────────────────────── */
+      .who {
+        padding-block: clamp(3.5rem, 9vw, 6rem);
+      }
+
+      .who-grid {
+        margin-top: clamp(1.75rem, 4vw, 2.5rem);
+        display: grid;
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      }
+
+      .who-grid p {
+        margin: 0;
+        max-width: 46ch;
+      }
+
+      /* ── Contact ─────────────────────────────────────────── */
+      .email {
+        display: inline-block;
+        margin-top: clamp(1.75rem, 4vw, 2.5rem);
+        font-family: var(--display);
+        font-variation-settings: "wdth" 105, "wght" 700;
+        font-size: clamp(1.25rem, 4vw, 2rem);
+        color: var(--ink);
+        text-decoration: none;
+        border-bottom: 3px solid var(--stamp);
+        padding-bottom: 0.15em;
+      }
+
+      .email:hover {
+        color: var(--stamp);
+      }
+
+      /* ── Footer ──────────────────────────────────────────── */
+      .footer {
+        padding-block: clamp(2.5rem, 6vw, 4rem);
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: end;
+        gap: 2rem;
+      }
+
+      /* The one artifact: a registration stamp, used exactly once. */
+      .stamp {
+        display: inline-block;
+        padding: 0.7rem 1rem;
+        border: 2px solid var(--stamp);
+        color: var(--stamp);
+        transform: rotate(-1.2deg);
+      }
+
+      .stamp-line {
+        display: block;
+        font-family: var(--mono);
+        font-size: 0.66rem;
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        line-height: 1.7;
+      }
+
+      .stamp-head {
+        font-weight: 500;
+        letter-spacing: 0.2em;
+      }
+
+      .colophon {
+        margin: 0;
+        font-family: var(--mono);
+        font-size: 0.66rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--ink-soft);
+      }
+
+      /* ── Small screens: the band becomes a stacked ledger ── */
+      @media (max-width: 46rem) {
+        .share-track {
+          flex-direction: column;
+          gap: 0.85rem;
+        }
+
+        .seg {
+          flex: none;
+          display: grid;
+          grid-template-columns: 9rem 1fr;
+          align-items: center;
+          gap: 0.85rem;
+        }
+
+        .seg-fill {
+          height: 1.75rem;
+          width: var(--w);
+          min-width: 2rem;
+          grid-row: 1;
+          grid-column: 2;
+        }
+
+        .seg-meta {
+          grid-row: 1;
+          grid-column: 1;
+          padding-top: 0;
+          display: flex;
+          flex-direction: column-reverse;
+        }
+
+        .seg-pct {
+          font-size: 0.8rem;
+        }
+
+        .seg-label {
+          font-size: 0.62rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .seg-fill {
+          animation: none;
+        }
+      }
+    </style>
+  </body>
+</html>
